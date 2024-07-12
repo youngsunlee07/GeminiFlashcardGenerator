@@ -1,6 +1,6 @@
 # Flashcard Generator
 
-Flashcard Generator is a web application that uses FastAPI and Google Gemini to generate flashcards from various document formats. This project helps in managing and summarizing study materials easily.
+Flashcard Generator is a web application that uses FastAPI and Google Gemini to generate flashcards from various document formats through Retrieval-Augmented Generation (RAG). This project helps teachers easily create and manage study materials, enhancing the educational experience by simplifying content creation and summarization tasks.
 
 ## Features
 - Supports various document formats (PDF, DOCX, PPTX, XLSX, CSV)
