@@ -90,7 +90,7 @@ uvicorn app.main:app --reload
 
 
 ## Usage
-1. Access Swagger UI: Open http://127.0.0.1:8000/docs in your browser.
+1. Access Swagger UI: Open http://127.0.0.1:8000/docs in your browser. 
 
 2. Try it out:
 - Click on the POST /upload-content section to expand it.
@@ -115,7 +115,7 @@ You can view the results in the response section of the Swagger UI.
 This project is distributed under the MIT License. See the LICENSE file for more information.
 
 ## Contact
-For any inquiries about the project, please contact your-email@example.com.
+For any inquiries about the project, please contact youngsun.lee07@gmail.com 
 
 
 
