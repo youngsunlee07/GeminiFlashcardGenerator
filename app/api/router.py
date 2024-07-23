@@ -58,10 +58,24 @@ async def chat(request: ChatRequest, _ = Depends(key_check)):
     return ChatResponse(data=[formatted_response]) 
 
 @router.post("/upload-content", response_model=List[Dict])
-async def upload_content(youtube_url: str = Form(None), files: List[UploadFile] = File(None), max_flashcards: int = Query(10), _ = Depends(key_check)):
+async def upload_content(youtube_url: str = Form(""), files: List[UploadFile] = File(None), max_flashcards: int = Query(10), _ = Depends(key_check)):
     try:
+        logger.info(f"Received YouTube URL: {youtube_url}")
+        logger.info(f"Received files: {files}")
+        logger.info(f"files type: {type(files)}")
+        if files:
+            for file in files:
+                logger.info(f"File name: {file.filename}, File type: {type(file)}")
+        else:
+            logger.info("No files received")
+
+        logger.info(f"Received max_flashcards: {max_flashcards}")
+
         flashcards = dynamo_executor(youtube_url=youtube_url, files=files, verbose=True, max_flashcards=max_flashcards)
         return flashcards
+    except ValueError as e:
+        logger.error(f"ValueError: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         logger.error(f"Error processing content: {e}")
         raise HTTPException(status_code=500, detail="Failed to process content.")
