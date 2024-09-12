@@ -35,16 +35,16 @@ def executor(youtube_url: str = None, files: list[UploadFile] = None, verbose=Fa
                 logger.info(f"Processing file: {file.filename}")
                 loader_class = get_loader(file)
                 
-                # 문서 로드
+                # Load document
                 loader = loader_class([file])
                 documents = loader.load()
                 logger.info(f"Documents loaded: {documents}")
                 
-                # 문서 요약
+                # Summarize document
                 summary = summarize_documents(documents)
                 logger.info(f"Summary for file {file.filename}: {summary}")
                 
-                # 플래시카드 생성
+                # Generate flashcards
                 flashcards = generate_flashcards(summary, verbose=verbose, max_flashcards=max_flashcards)
                 sanitized_flashcards.extend(flashcards[:max_flashcards])
             except Exception as e:
